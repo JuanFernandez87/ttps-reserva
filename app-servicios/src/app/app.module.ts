@@ -9,6 +9,9 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
 import { MenubarModule } from 'primeng/menubar';
 import { RegistroServiciosComponent } from './pages/registro-servicios/registro-servicios.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
+import { EditarServicioComponent } from './pages/editar-servicio/editar-servicio.component';
+import { ListadoServiciosComponent } from './pages/listado-servicios/listado-servicios.component';
+import { EliminarServicioComponent } from './pages/eliminar-servicio/eliminar-servicio.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.co
     NavbarComponent,
     RegistroServiciosComponent,
     EditarUsuarioComponent,
+    EditarServicioComponent,
+    ListadoServiciosComponent,
+    EliminarServicioComponent,
   ],
   imports: [
     BrowserModule,

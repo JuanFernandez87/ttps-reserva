@@ -1,0 +1,60 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<app-navbar></app-navbar>
+<body>
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Editar servicio</h3>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Nombre</label><br>
+                                <input type="text" name="name" id="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Tipo de servicio</label><br>
+                                <input type="text" name="tipo" id="tipo" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Descripción</label><br>
+                                <input type="text" name="descripcion" id="descripcion" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Url</label><br>
+                                <input type="text" name="url" id="url" class="form-control">
+                            </div>   
+                            <label class="text-info">REDES SOCIALES</label><br>    
+                            <div class="form-group">
+                                <label for="password" class="text-info">Facebook</label><br>
+                                <input type="text" name="face" id="face" class="form-control">
+                            </div> 
+                            <div class="form-group">
+                                <label for="password" class="text-info">Instagram</label><br>
+                                <input type="text" name="ig" id="ig" class="form-control">
+                            </div>  
+                            <div class="form-group">
+                                <label for="password" class="text-info">Twitter</label><br>
+                                <input type="text" name="tw" id="tw" class="form-control">
+                            </div>                                                                                                                                                                                             
+                            <label for="password" class="text-info">Galeria</label><br>
+                            <div class="form-group" style="width: 1500px">
+                                <input class="form-control w-25 inline" type="file" name="file1" /> 
+                                <input class="form-control w-25 inline" type="file" name="file2" /> 
+                                <input class="form-control w-25 inline" type="file" name="file3" /> 
+                                <input class="form-control w-25 inline" type="file" name="file4" />                                 
+                            </div>                                                                                                                                          
+                            <div class="form-group">
+                                <br><input type="submit" name="submit" class="btn btn-info btn-md" value="Enviar">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" style="margin-left: 50px;" value="Volver" routerLink="/sesion">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
