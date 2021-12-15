@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SesionComponent } from './pages/sesion/sesion.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { MenubarModule } from 'primeng/menubar';
+import { RegistroServiciosComponent } from './pages/registro-servicios/registro-servicios.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { MenubarModule } from 'primeng/menubar';
     RegistroComponent,
     SesionComponent,
     NavbarComponent,
+    RegistroServiciosComponent,
+    EditarUsuarioComponent,
   ],
   imports: [
     BrowserModule,
