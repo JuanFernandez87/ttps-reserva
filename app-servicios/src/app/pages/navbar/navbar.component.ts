@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
                   {
                       label:'Lista',
                       icon:'pi pi-fw pi-caret-right',
+                      routerLink: ["/listado_servicios"],
 
                   },                  
                   {
@@ -33,15 +34,12 @@ export class NavbarComponent implements OnInit {
 
                   },
                   {
-                      label:'Editar',
-                      icon:'pi pi-fw pi-caret-right',
-
-                  },
-                  {
-                      label:'Eliminar',
-                      icon:'pi pi-fw pi-caret-right',
+                    label:'Editar',
+                    icon:'pi pi-fw pi-caret-right',
+                    routerLink: ["/editar_servicio"],
 
                 },
+                
               ]
           },
           {
