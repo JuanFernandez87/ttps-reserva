@@ -1,13 +1,21 @@
 package ttps.controllers;
 
 import org.springframework.web.bind.annotation.*;
+
+
 import ttps.spring.model.Usuario;
 import java.util.List;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+
 import ttps.clasesDAO.UsuarioDAO;
 
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/usuario", produces = "application/json")
 public class UsuarioController {
@@ -38,12 +46,24 @@ public class UsuarioController {
 	}
 
 	// Crear usuario
+	/*@PostMapping
+	public ResponseEntity<Void> createUser(@RequestBody Usuario nuevoUsuario, BindingResult bindingResult) {
+		System.out.println("Creando el usuario " + nuevoUsuario.getUser());
+		System.out.println("Creando el usuario " + nuevoUsuario.getUser());
+		
+		if (usuarioDAO.isExist(nuevoUsuario.getUser())) {
+			System.out.println("Ya existe el usuario " + nuevoUsuario.getUser());
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT); // Cï¿½digo de respuesta 409
+		}
+		usuarioDAO.persistir(nuevoUsuario);
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
+	}*/
 	@PostMapping
 	public ResponseEntity<Void> createUser(@RequestBody Usuario user) {
 		/*System.out.println("Creando el usuario " + user.getUser());
 		if (usuarioDAO.isExist(user.getUser())) {
 			System.out.println("Ya existe el usuario " + user.getUser());
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT); // Código de respuesta 409
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT); // Cï¿½digo de respuesta 409
 		}*/
 		usuarioDAO.persistir(user);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);

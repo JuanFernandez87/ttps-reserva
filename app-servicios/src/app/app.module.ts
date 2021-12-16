@@ -9,6 +9,9 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
 import { MenubarModule } from 'primeng/menubar';
 import { RegistroServiciosComponent } from './pages/registro-servicios/registro-servicios.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MenubarModule
+    MenubarModule,
+    FormsModule,
+    CommonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
