@@ -13,6 +13,11 @@ import { EditarServicioComponent } from './pages/editar-servicio/editar-servicio
 import { ListadoServiciosComponent } from './pages/listado-servicios/listado-servicios.component';
 import { EliminarServicioComponent } from './pages/eliminar-servicio/eliminar-servicio.component';
 
+import { MatTableModule } from '@angular/material/table';
+import {FormsModule} from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +34,11 @@ import { EliminarServicioComponent } from './pages/eliminar-servicio/eliminar-se
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MenubarModule
+    MenubarModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,4 +4,74 @@
 <!------ Include the above in your HEAD tag ---------->
 <app-navbar></app-navbar>
 
-<p> Aca iria el listado de sercivios, con la opcion de ver, eliminar y editar</p>
+<body>
+
+    
+</body>
+  
+    <div clas="contedor-listado">
+        <table class="table" mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+
+            <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef class="label-titulo"> Código </th>
+            <td mat-cell *matCellDef="let evento" class="label-texto"> {{evento.codigo}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef class="label-titulo"> Nombre </th>
+                <td mat-cell *matCellDef="let evento" class="label-texto"> {{evento.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tipo">
+                <th mat-header-cell *matHeaderCellDef class="label-titulo"> Tipo </th>
+                <td mat-cell *matCellDef="let evento" class="label-texto"> {{evento.tipo}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef class="label-titulo"> Descripción </th>
+            <td mat-cell *matCellDef="let evento" class="label-texto"> {{evento.descripcion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="url">
+                <th mat-header-cell *matHeaderCellDef class="label-titulo"> URL </th>
+                <td mat-cell *matCellDef="let evento"> {{evento.url}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ver">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let j = index;">
+                <button mat-raised-button color="warn" style="background-color: darkolivegreen;" focusable="false" (click)="verFila()">
+                    Ver
+                </button>
+                </td>
+            </ng-container>  
+
+            <ng-container matColumnDef="editar">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let j = index;">
+                <button mat-raised-button color="warn" style="background-color: darkorange;" focusable="false" (click)="editarFila()">
+                    Editar
+                </button>
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="borrar">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let j = index;">
+                <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
+                    Eliminar
+                </button>
+                </td>
+            </ng-container>
+        
+        
+            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+        </table>
+
+    </div>  
+
+
+
+ 
