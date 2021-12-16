@@ -17,16 +17,6 @@ export class ListadoServiciosComponent implements OnInit {
 
   datos: Evento[] = [new Evento(1,'Nos casamos', 'Casamiento', 'El mejor casamiento de todos', 'https://www.casamientos.com.ar/'),
   new Evento(2, 'Mi fiesta de 15', 'Cumpleaños', 'El mejor cumpleaños de 15 de todos', 'https://www.cumpleaños.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
-  // new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/'),
   new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/')
   ];
 
