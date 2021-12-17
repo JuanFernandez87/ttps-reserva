@@ -9,30 +9,35 @@
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
+                        <form id="register-form" class="form" (ngSubmit)="registrarServicio()" method="post">
                             <h3 class="text-center text-info">Registrar servicio</h3>
                             <div class="form-group">
                                 <label for="password" class="text-info">Nombre</label><br>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="name" id="name" class="form-control"
+                                [(ngModel)]="nombre">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Tipo de servicio</label><br>
-                                <input type="text" name="tipo" id="tipo" class="form-control">
+                                <input type="text" name="tipo" id="tipo" class="form-control"
+                                [(ngModel)]="tipo_servicio">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Descripción</label><br>
-                                <input type="text" name="descripcion" id="descripcion" class="form-control">
+                                <input type="text" name="descripcion" id="descripcion" class="form-control"
+                                [(ngModel)]="descripcion">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Url</label><br>
-                                <input type="text" name="url" id="url" class="form-control">
+                                <input type="text" name="url" id="url" class="form-control"
+                                [(ngModel)]="url">
                             </div>   
                             <label class="text-info">REDES SOCIALES</label><br>    
                             <div class="form-group">
                                 <label for="password" class="text-info">Facebook</label><br>
-                                <input type="text" name="face" id="face" class="form-control">
+                                <input type="text" name="face" id="face" class="form-control"
+                                [(ngModel)]="facebook">
                             </div> 
-                            <div class="form-group">
+                           <!-- <div class="form-group">
                                 <label for="password" class="text-info">Instagram</label><br>
                                 <input type="text" name="ig" id="ig" class="form-control">
                             </div>  
@@ -46,7 +51,7 @@
                                 <input class="form-control w-25 inline" type="file" name="file2" /> 
                                 <input class="form-control w-25 inline" type="file" name="file3" /> 
                                 <input class="form-control w-25 inline" type="file" name="file4" />                                 
-                            </div>                                                                                                                                          
+                            </div>   -->                                                                                                                                       
                             <div class="form-group">
                                 <br><input type="submit" name="submit" class="btn btn-info btn-md" value="Enviar">
                                 <input type="submit" name="submit" class="btn btn-info btn-md" style="margin-left: 50px;" value="Volver" routerLink="/sesion">

@@ -7,13 +7,19 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsuarioService {
-  URL = 'http://localhost:8080/ttps-spring/usuario'
+  
+  URL = 'http://localhost:8080/ttps-spring/usuario';
+  data = new Observable<Usuario[]>();
 
   constructor(private httpClient: HttpClient) { }
 
   public nuevo(nuevoUsuario: Usuario): Observable<any>{
-    return this.httpClient.post<any>(this.URL, nuevoUsuario);
+    return this.httpClient.post<Usuario[]>(this.URL, nuevoUsuario);
   }
 
+  login(): Observable<Usuario[]>{
+    return this.data = this.httpClient.get<Usuario[]>(this.URL + '/all');
+    
+  }
  
 }

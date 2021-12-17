@@ -1,4 +1,5 @@
 export class Usuario {
+    id!:number;
     nombre: string;
     apellido: string;
     dni: number;
@@ -16,4 +17,5 @@ export class Usuario {
         this.dni = dni;
         this.fechaNac = fechaNac;
     }
+    
 }

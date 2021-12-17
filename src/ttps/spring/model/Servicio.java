@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,15 +24,52 @@ public class Servicio {
     private String tipo_servicio;
     private String descripcion;
     private String url;
+    private String  id_usuario;
     //private List<String> galeria;
     
-    @OneToMany (mappedBy = "servicio")
+    @ManyToOne
+	Usuario usuario;
+    
+    public String getId_usuario() {
+		return id_usuario;
+	}
+
+	public void setId_usuario(String id_usuario) {
+		this.id_usuario = id_usuario;
+	}
+
+	public List<Valoracion> getValoraciones() {
+		return valoraciones;
+	}
+
+	public void setValoraciones(List<Valoracion> valoraciones) {
+		this.valoraciones = valoraciones;
+	}
+
+	public RedesSociales getRedes_sociales() {
+		return redes_sociales;
+	}
+
+	public void setRedes_sociales(RedesSociales redes_sociales) {
+		this.redes_sociales = redes_sociales;
+	}
+
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
+
+	@OneToMany (mappedBy = "servicio")
     private List <Valoracion> valoraciones = new ArrayList<Valoracion>();
     
 	@OneToOne
 	private RedesSociales redes_sociales;
     //@OneToOne
 	//private Valoracion valoracion;
+	
 	@ManyToOne
 	private Usuario user;
         

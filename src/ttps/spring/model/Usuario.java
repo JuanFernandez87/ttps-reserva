@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,6 +37,14 @@ public class Usuario {
 	@OneToMany
 	private List<Servicio> servicios = new LinkedList<Servicio>();
 	
+	public void setEventos(List<Evento> eventos) {
+		this.eventos = eventos;
+	}
+
+	public void setServicios(List<Servicio> servicios) {
+		this.servicios = servicios;
+	}
+
 	public Usuario() {
 	}
 

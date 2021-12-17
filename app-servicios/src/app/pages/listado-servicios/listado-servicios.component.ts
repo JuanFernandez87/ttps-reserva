@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { Servicio } from 'src/app/models/Servicio';
+import { ServicioService } from 'src/app/services/servicio.service';
 
 @Component({
   selector: 'app-listado-servicios',
@@ -8,19 +10,25 @@ import { MatTable } from '@angular/material/table';
 })
 export class ListadoServiciosComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private servicioService: ServicioService
+  ) { }
 
   ngOnInit(): void {
+    this.getServicios();
   }
 
   columnas: string[] = [ 'codigo', 'nombre', 'tipo', 'descripcion', 'url', 'ver', 'editar', 'borrar'];
 
-  datos: Evento[] = [new Evento(1,'Nos casamos', 'Casamiento', 'El mejor casamiento de todos', 'https://www.casamientos.com.ar/'),
-  new Evento(2, 'Mi fiesta de 15', 'Cumpleaños', 'El mejor cumpleaños de 15 de todos', 'https://www.cumpleaños.com.ar/'),
-  new Evento(3, 'Fiesta dj Dero', 'Dj', 'El mejor dj de todos', 'https://www.dj.com.ar/')
-  ];
+  datos: Servicio[] = [];
 
-  eventoselect: Evento = new Evento(0, "", "", "", "" );
+  private getServicios():void{
+    this.servicioService.lista().subscribe((data: Servicio[])=>{
+      this.datos = data;
+    });
+  }
+
+  //eventoselect: Evento = new Evento(0, "", "", "", "" );
 
   @ViewChild(MatTable) tabla1!: MatTable<Evento>;
 

@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,16 +14,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ttps.clasesDAO.ServicioDAO;
+import ttps.clasesDAO.UsuarioDAO;
 import ttps.spring.model.Servicio;
+import ttps.spring.model.Usuario;
+
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 @RequestMapping(value = "/servicios", produces = "application/json")
 public class ServicioController {
 
 	@Autowired
 	private ServicioDAO servicioDAO;
+	
+	@Autowired
+	private UsuarioDAO usuarioDAO;
 
 	// Recupero todos los servicios
+	@CrossOrigin
 	@GetMapping("/all")
 	public ResponseEntity<List<Servicio>> listAllServices() {
 		List<Servicio> servicios = servicioDAO.recuperarTodos("tipo_servicio");
@@ -33,6 +42,7 @@ public class ServicioController {
 	}
 
 	// Recupero un servicio por id
+	@CrossOrigin
 	@GetMapping("/{id}")
 	public ResponseEntity<Servicio> getServicio(@PathVariable("id") Integer id) {
 		System.out.println("Obteniendo servicio con id " + id);
@@ -43,11 +53,10 @@ public class ServicioController {
 		}
 		return new ResponseEntity<Servicio>(servicio, HttpStatus.OK);
 	}
-
+	
 	// Crear servicio
-	@PostMapping
+	@PostMapping("/nuevo")
 	public ResponseEntity<Void> createServicio(@RequestBody Servicio servicio) {
-		System.out.println("Creando el servicio " + servicio);
 		servicioDAO.persistir(servicio);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
