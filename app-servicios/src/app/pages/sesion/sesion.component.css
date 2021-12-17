@@ -1,0 +1,36 @@
+body {
+    background-color: #6D9886;
+  }
+  
+  table {
+    width: 85%;
+    margin-left: 130px;
+    margin-top: -900px;
+  }
+  
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    margin:1rem auto;
+    max-width: 600px;
+    box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
+    padding: 1rem;
+    background-color: #6D9886;
+    
+  }   
+  
+  .label-titulo{
+  
+        color: lightseagreen;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+  }
+  
+  .label-texto {
+   
+      font-size: 14;
+      color: black;
+      text-align: center;
+  
+  }

@@ -1,6 +1,8 @@
 package ttps.controllers;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,29 +16,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ttps.clasesDAO.ServicioDAO;
-import ttps.clasesDAO.UsuarioDAO;
 import ttps.spring.model.Servicio;
-import ttps.spring.model.Usuario;
 
-
-@RestController
 @CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
+@RestController
 @RequestMapping(value = "/servicios", produces = "application/json")
 public class ServicioController {
 
 	@Autowired
 	private ServicioDAO servicioDAO;
-	
-	@Autowired
-	private UsuarioDAO usuarioDAO;
-
+		
 	// Recupero todos los servicios
-	@CrossOrigin
 	@GetMapping("/all")
 	public ResponseEntity<List<Servicio>> listAllServices() {
 		List<Servicio> servicios = servicioDAO.recuperarTodos("tipo_servicio");
-		if (servicios.isEmpty()) {
-			return new ResponseEntity<List<Servicio>>(HttpStatus.NO_CONTENT);
+		if (servicios.isEmpty()) {			
+			return new ResponseEntity<List<Servicio>>(HttpStatus.NO_CONTENT);			
 		}
 		return new ResponseEntity<List<Servicio>>(servicios, HttpStatus.OK);
 	}

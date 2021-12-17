@@ -1,15 +1,12 @@
 package ttps.controllers;
 
 import org.springframework.web.bind.annotation.*;
-
 import ttps.spring.model.Usuario;
 import ttps.spring.model.usuarioNuevo;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +23,12 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioDAO usuarioDAO;
-	
-	private final static Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
 	// Recupero todos los usuarios
 	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> listAllUsers() {
 		List<Usuario> users = usuarioDAO.recuperarTodos("user");
 		if (users.isEmpty()) {
-			logger.error("se devolvera la lista");
 			return new ResponseEntity<List<Usuario>>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Usuario>>(users, HttpStatus.OK);

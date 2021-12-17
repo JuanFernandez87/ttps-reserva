@@ -11,8 +11,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class LoginComponent implements OnInit {
   usuarioNuevo! : UsuarioNuevo;
-  user: string = "nuevoUsuario";
-  password: string = "123456";
+  user: string = "";
+  password: string = "";
   list : Usuario[] = [];
 
   constructor(

@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Servicio } from '../models/Servicio';
 
@@ -8,24 +8,32 @@ import { Servicio } from '../models/Servicio';
 })
 export class ServicioService {
 
-  URL = "http://localhost:8080/ttps-spring/servicios/nuevo";
+  private url: string = "http://localhost:8080/ttps-spring/servicios";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
+  // obtener servicios   
   public lista(): Observable<Servicio[]> {
-    return this.httpClient.get<Servicio[]>(this.URL + '/all');
-  }
+    return this.http.get<Servicio[]>(this.url + '/all');
+   }
 
+  // obtener un servicio por id
+  public servicio(id: number): Observable<Servicio> {
+    return this.http.get<Servicio>(this.url+'/'+id);
+   }
+
+  // crear servicio 
   public save(servicio: Servicio): Observable<any> {
-    console.log("se ejecuto el metodo del service");
-    return this.httpClient.post<Servicio[]>(this.URL, servicio);
-  }
+    return this.http.post<Servicio[]>(this.url + '/nuevo', servicio);
+   }
 
+  // actulizar servicio  
   public update(id: number, servicio: Servicio): Observable<any> {
-    return this.httpClient.put<any>(this.URL + id, servicio);
-  }
+    return this.http.put<any>(this.url + id, servicio);
+   }
 
+  // borrar servicio
   public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.URL + id);
+    return this.http.delete<any>(this.url + id);
   }
-}
+}  
