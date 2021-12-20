@@ -37,19 +37,10 @@
                 <td mat-cell *matCellDef="let evento"> {{evento.url}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="ver">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let j = index;">
-                <button mat-raised-button color="warn" style="background-color: darkolivegreen;" focusable="false" (click)="verFila()">
-                    Ver
-                </button>
-                </td>
-            </ng-container>  
-
             <ng-container matColumnDef="editar">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let j = index;">
-                <button mat-raised-button color="warn" style="background-color: darkorange;" focusable="false" (click)="editarFila()">
+                <button mat-raised-button color="warn" style="background-color: darkorange;" focusable="false" (click)="editarFila(j)">
                     Editar
                 </button>
                 </td>

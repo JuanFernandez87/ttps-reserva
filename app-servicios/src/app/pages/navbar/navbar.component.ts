@@ -33,12 +33,6 @@ export class NavbarComponent implements OnInit {
                       routerLink: ["/registro_servicio"],
 
                   },
-                  {
-                    label:'Editar',
-                    icon:'pi pi-fw pi-caret-right',
-                    routerLink: ["/editar_servicio"],
-
-                },
                 
               ]
           },

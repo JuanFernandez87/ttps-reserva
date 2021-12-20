@@ -1,4 +1,5 @@
 export class Servicio {
+    id!: number;
     nombre: string;
     tipo_servicio: string;
     descripcion: string;
@@ -9,7 +10,6 @@ export class Servicio {
         this.tipo_servicio = tipo;
         this.descripcion = descripcion;
         this.url = url;
-
     }
     
 }

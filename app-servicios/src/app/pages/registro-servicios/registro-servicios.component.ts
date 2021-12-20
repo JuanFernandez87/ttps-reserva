@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Servicio } from 'src/app/models/Servicio';
 import { ServicioService } from 'src/app/services/servicio.service';
 
@@ -18,7 +19,8 @@ export class RegistroServiciosComponent implements OnInit {
   twitter!:string;
 
   constructor(
-    private servicioService: ServicioService
+    private servicioService: ServicioService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +32,6 @@ export class RegistroServiciosComponent implements OnInit {
     this.servicio.id_usuario = sessionStorage.getItem("id_usuario_activo");
     let data = this.servicioService.save(this.servicio);
     data.subscribe(err => console.log('HTTP Error', err));
+    this.router.navigateByUrl("/listado_servicios");
   }
 }
