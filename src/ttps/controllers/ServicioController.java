@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ttps.clasesDAO.ServicioDAO;
-import ttps.clasesDAO.UsuarioDAO;
 import ttps.spring.model.Servicio;
-import ttps.spring.model.Usuario;
 
 
 @RestController
@@ -27,14 +25,32 @@ public class ServicioController {
 	@Autowired
 	private ServicioDAO servicioDAO;
 	
-	@Autowired
-	private UsuarioDAO usuarioDAO;
-
 	// Recupero todos los servicios
 	@CrossOrigin
 	@GetMapping("/all")
 	public ResponseEntity<List<Servicio>> listAllServices() {
 		List<Servicio> servicios = servicioDAO.recuperarTodos("tipo_servicio");
+		System.out.println("contenido de servicios: "+ servicios);
+		if (servicios.isEmpty()) {
+			return new ResponseEntity<List<Servicio>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Servicio>>(servicios, HttpStatus.OK);
+	}
+	
+	@CrossOrigin
+	@GetMapping("/servicios/{id}")
+	public ResponseEntity<List<Servicio>> getServicioIdUser(@PathVariable("id") Integer id) {
+		List<Servicio> servicios = servicioDAO.recuperarTodos("tipo_servicio");
+		List<Servicio> servicios2 = servicioDAO.recuperarTodos("tipo_servicio");
+		int index = 0;
+		for(Servicio serv: servicios2) {
+			if(Integer.parseInt(serv.getId_usuario()) != id) {
+				servicios.remove(index);
+			}else {
+				index++;
+			}
+			
+		}
 		if (servicios.isEmpty()) {
 			return new ResponseEntity<List<Servicio>>(HttpStatus.NO_CONTENT);
 		}
