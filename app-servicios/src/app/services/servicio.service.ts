@@ -8,14 +8,14 @@ import { Servicio } from '../models/Servicio';
 })
 export class ServicioService {
 
-  private url: string = "http://localhost:8080/ttps-spring/servicios";
+  URL = "http://localhost:8080/ttps-spring/servicios";
 
   constructor(private http: HttpClient) { }
 
   // obtener servicios   
   public lista(): Observable<Servicio[]> {
-    return this.http.get<Servicio[]>(this.url + '/all');
-   }
+    return this.httpClient.get<Servicio[]>(this.URL + '/servicios/'+  window.sessionStorage.getItem("id_usuario_activo"));
+  }
 
   // obtener un servicio por id
   public servicio(id: number): Observable<Servicio> {
@@ -24,16 +24,19 @@ export class ServicioService {
 
   // crear servicio 
   public save(servicio: Servicio): Observable<any> {
-    return this.http.post<Servicio[]>(this.url + '/nuevo', servicio);
-   }
+    console.log("se ejecuto el metodo del service");
+    return this.httpClient.post<Servicio[]>(this.URL + '/nuevo', servicio);
+  }
 
   // actulizar servicio  
   public update(id: number, servicio: Servicio): Observable<any> {
-    return this.http.put<any>(this.url + id, servicio);
-   }
+    console.log("editado");
+    return this.httpClient.put<any>(this.URL + id, servicio);
+  }
 
   // borrar servicio
   public delete(id: number): Observable<any> {
-    return this.http.delete<any>(this.url + id);
+    console.log(`/${id}`);
+    return this.httpClient.delete<any>(this.URL + `/${id}`);
   }
 }  

@@ -1,4 +1,5 @@
 export class Servicio {
+    id!: number;
     nombre: string;
     tipo_servicio: string;
     descripcion: string;

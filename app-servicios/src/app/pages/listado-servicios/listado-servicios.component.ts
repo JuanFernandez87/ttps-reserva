@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Servicio } from 'src/app/models/Servicio';
 import { ServicioService } from 'src/app/services/servicio.service';
 
@@ -9,16 +10,22 @@ import { ServicioService } from 'src/app/services/servicio.service';
   styleUrls: ['./listado-servicios.component.css']
 })
 export class ListadoServiciosComponent implements OnInit {
+  servicio!: Servicio;
+  nombre: string = "Rico y abudante-edit";
+  tipo_servicio:string = "Food truck-edit";
+  descripcion:string = "El mejor food truck de todos-edit";
+  url:string = "https://www.ricoyabundante.com.ar/%27";
 
   constructor(
-    private servicioService: ServicioService
+    private servicioService: ServicioService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getServicios();
   }
 
-  columnas: string[] = [ 'codigo', 'nombre', 'tipo', 'descripcion', 'url', 'ver', 'editar', 'borrar'];
+  columnas: string[] = [ 'codigo', 'nombre', 'tipo', 'descripcion', 'url', 'editar', 'borrar'];
 
   datos: Servicio[] = [];
 
@@ -33,27 +40,21 @@ export class ListadoServiciosComponent implements OnInit {
   @ViewChild(MatTable) tabla1!: MatTable<Evento>;
 
   borrarFila(cod: number) {
+    console.log("contenido de cod: ", this.datos[cod]);
+    this.servicioService.delete(this.datos[cod].id);
     if (confirm("Realmente quiere borrarlo?")) {
       this.datos.splice(cod, 1);
       this.tabla1.renderRows();
     }
   }
 
-  editarFila() {
-     {
-
+  editarFila(fila: number) {
+      this.servicio = new Servicio(this.nombre,this.tipo_servicio,this.descripcion,this.url);
+      this.servicioService.update(this.datos[fila].id,this.servicio);
       this.tabla1.renderRows();
-      // routerLink: ["/editar_servicio"],
-    }
+
   }
 
-  verFila() {
-
-    this.tabla1.renderRows();
-    // routerLink: ["/editar_servicio"],
-     
-    
-    }
   }
 
 

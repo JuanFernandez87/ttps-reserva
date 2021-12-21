@@ -1,8 +1,6 @@
 package ttps.controllers;
 
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,13 +23,34 @@ public class ServicioController {
 
 	@Autowired
 	private ServicioDAO servicioDAO;
-		
+	
 	// Recupero todos los servicios
 	@GetMapping("/all")
 	public ResponseEntity<List<Servicio>> listAllServices() {
 		List<Servicio> servicios = servicioDAO.recuperarTodos("tipo_servicio");
-		if (servicios.isEmpty()) {			
-			return new ResponseEntity<List<Servicio>>(HttpStatus.NO_CONTENT);			
+		System.out.println("contenido de servicios: "+ servicios);
+		if (servicios.isEmpty()) {
+			return new ResponseEntity<List<Servicio>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Servicio>>(servicios, HttpStatus.OK);
+	}
+	
+	@CrossOrigin
+	@GetMapping("/servicios/{id}")
+	public ResponseEntity<List<Servicio>> getServicioIdUser(@PathVariable("id") Integer id) {
+		List<Servicio> servicios = servicioDAO.recuperarTodos("tipo_servicio");
+		List<Servicio> servicios2 = servicioDAO.recuperarTodos("tipo_servicio");
+		int index = 0;
+		for(Servicio serv: servicios2) {
+			if(Integer.parseInt(serv.getId_usuario()) != id) {
+				servicios.remove(index);
+			}else {
+				index++;
+			}
+			
+		}
+		if (servicios.isEmpty()) {
+			return new ResponseEntity<List<Servicio>>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Servicio>>(servicios, HttpStatus.OK);
 	}
